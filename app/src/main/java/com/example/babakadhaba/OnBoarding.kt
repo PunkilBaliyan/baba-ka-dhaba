@@ -1,21 +1,22 @@
 package com.example.babakadhaba
+
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,7 +24,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,23 +45,40 @@ fun OnboardingScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(26.dp))
-        Text(
-
-            text = "BABA KA DHABA",
-            fontSize = 24.sp,
-            color = Color.Black
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {  Image(
+            painter = painterResource(id = R.drawable.img),
+            contentDescription = "Logo",
+            modifier = Modifier
+                .fillMaxHeight().padding(start = 10.dp)
 
 
         )
-        Spacer(modifier = Modifier.height(16.dp))
+            Text(
 
-        // Box to create a colored background for the text
+                text = "Baba ka Dhaba",
+                color = Color.Black,
+                modifier = Modifier
+                    .padding(start = 30.dp,top=5.dp),
+                style = TextStyle(
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                ),
+                letterSpacing = 1.5.sp
+
+            )
+        }
+        Spacer(modifier = Modifier.height(100.dp))
+
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(
-                    colorResource(id = R.color.Grey_background),
-
+                    colorResource(id = R.color.Grey_background)
                     )
                 .height(100.dp)
         ) {
@@ -70,13 +90,18 @@ fun OnboardingScreen() {
                 modifier = Modifier.align(Alignment.Center)
             )
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(32.dp))
         Text(text = "Required Information:",
             fontSize= 18.sp,
-            textAlign = TextAlign.Left
+            textAlign = TextAlign.Left,
+            modifier = Modifier
+                .align(Alignment.Start)
+                .padding(
+                    30.dp
+                )
             )
 
-        Spacer(modifier = Modifier.height(32.dp))
+
         OutlinedTextField(
             value = firstName.value,
             onValueChange = { firstName.value = it },
@@ -101,12 +126,15 @@ fun OnboardingScreen() {
         Button(
             onClick = { /* Handle registration */ },
             modifier = Modifier
-                .width(200.dp)
-                .height(56.dp),
+                .fillMaxWidth()
+                .height(56.dp)
+                .padding(12.dp,0.dp)
+                ,
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(id = R.color.button_color),
-                contentColor = Color.White
+                contentColor = Color.White,
+
             )
         ) {
             Text(
